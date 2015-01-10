@@ -1,0 +1,9 @@
+kramdown:
+  input:		GFM
+  toc_levels:	1..6
+
+gems:
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+- jekyll-sitemap
