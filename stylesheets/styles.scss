@@ -6,6 +6,12 @@
 $body_font: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $body_color: #222;
 
+$light_bg: #F2F1E9;
+$dark_bg: #323640;
+
+$light_text: #fff;
+$dark_text: #000;
+
 $heading_color: #494949;
 
 $accent_color_1: #393939;
@@ -15,8 +21,12 @@ $accent_color_3: #777;
 body {
   padding:50px;
   font:14px/1.5 $body_font;
-  color: $body_color;
+  color: $dark_text;
   font-weight:300;
+  background: $dark_bg;
+}
+
+div.wrapper {
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -65,13 +75,14 @@ blockquote {
   font-style:italic;
 }
 
-code, pre {
+code {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color: $accent_color_1;
   font-size:12px;
 }
 
 pre {
+	@extend code;
   padding:8px 15px;
   background: #f8f8f8;  
   border-radius:5px;
@@ -107,43 +118,65 @@ header {
   width:270px;
   float:left;
   position:fixed;
-}
+  color: $light_text;
+	padding-top: 20px;
 
-header ul {
-  list-style:none;
-  height:40px;
-  
-  padding:0;
-  
-  background: #eee;
-  background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  
-  border-radius:5px;
-  border:1px solid #d2d2d2;
-  box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
-  width:270px;
-}
+	h1 {
+	 color: $light_text;
+	 }
+	
+  ul {
+		list-style:none;
+		height:40px;
+		
+		padding:0;
+		
+		background: #eee;
+		background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
+		background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+		background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+		background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+		background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
+		
+		border-radius:5px;
+		border:1px solid #d2d2d2;
+		box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
+		width:270px;
+	}
 
-header li {
-  width:89px;
-  float:left;
-  border-right:1px solid #d2d2d2;
-  height:40px;
-}
+	li {
+		width:89px;
+		float:left;
+		border-right:1px solid #d2d2d2;
+		height:40px;
+	}
 
-header ul a {
-  line-height:1;
-  font-size:11px;
-  color:#999;
-  display:block;
-  text-align:center;
-  padding-top:6px;
-  height:40px;
+	ul a {
+		line-height:1;
+		font-size:11px;
+		color:#999;
+		display:block;
+		text-align:center;
+		padding-top:6px;
+		height:40px;
+	}
+
+	ul li + li {
+		width:88px;
+		border-left:1px solid #fff;
+	}
+
+	ul li + li + li {
+		border-right:none;
+		width:89px;
+	}
+
+	ul a strong {
+		font-size:14px;
+		display:block;
+		color:#222;
+	}
 }
 
 strong {
@@ -151,26 +184,12 @@ strong {
   font-weight:700;
 }
 
-header ul li + li {
-  width:88px;
-  border-left:1px solid #fff;
-}
-
-header ul li + li + li {
-  border-right:none;
-  width:89px;
-}
-
-header ul a strong {
-  font-size:14px;
-  display:block;
-  color:#222;
-}
-
 section {
   width:500px;
   float:right;
-  padding-bottom:50px;
+  padding:20px 20px 50px 20px;
+  background: $light_bg;
+  border-radius:5px;
 }
 
 small {
@@ -189,6 +208,7 @@ footer {
   float:left;
   position:fixed;
   bottom:50px;
+	color: $light_text;
 }
 
 @media print, screen and (max-width: 960px) {
@@ -206,12 +226,13 @@ footer {
   
   header {
     padding-right:320px;
+		padding-left: 20px;
   }
   
   section {
     border:1px solid #e5e5e5;
     border-width:1px 0;
-    padding:20px 0;
+    padding:20px 20px 0px 20px;
     margin:0 0 20px;
   }
   
@@ -224,6 +245,10 @@ footer {
     right:50px;
     top:52px;
   }
+	
+	footer {
+		padding-left: 20px;
+	}
 }
 
 @media print, screen and (max-width: 720px) {
@@ -232,7 +257,7 @@ footer {
   }
   
   header {
-    padding:0;
+    padding-right: 0;
   }
   
   header ul, header p.view {
@@ -246,12 +271,17 @@ footer {
 
 @media print, screen and (max-width: 480px) {
   body {
-    padding:15px;
+    padding:0px;
+		margin: 0;
   }
   
   header ul {
     display:none;
   }
+	
+	section {
+		border-radius:0;
+	}
 }
 
 @media print {
